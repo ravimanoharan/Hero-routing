@@ -17,15 +17,17 @@ import { AccordionComponent } from './components/accordion/accordion.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogModule }  from 'primeng/dialog';
 import {DataTableModule} from 'primeng/datatable';
+import {EditorModule} from 'primeng/editor';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     DialogModule,
     DataTableModule,
-    BrowserAnimationsModule
+    EditorModule
   ],
   declarations: [
     AppComponent,

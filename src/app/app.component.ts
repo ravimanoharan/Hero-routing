@@ -53,8 +53,19 @@ export class AppComponent {
     /* Data Table */
     getCellValue(event) {
       // console.log(event.originalEvent.target.innerText);
-      // showDialog();
+      this.selectedCar = event.originalEvent.target.innerText;
       this.display = true;
+    }
+
+    /* Editor */
+    editValue: string;
+    getEditorValue(e) {
+      // console.log(e.textValue);
+      this.editValue = e.textValue;
+    }
+
+    doneEdit() {
+      this.selectedCar =this. editValue;
     }
 
      

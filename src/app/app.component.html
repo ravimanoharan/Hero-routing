@@ -15,6 +15,8 @@
 <!-- Dialogbox -->
 <p-dialog header="Title" [(visible)]="display">
     Content
+    <p-editor [(ngModel)]="selectedCar" (onTextChange)="getEditorValue($event)" [style]="{'height':'320px'}"></p-editor>
+    <button (click)="doneEdit()">Done</button>
 </p-dialog>
 <button type="text" (click)="showDialog()" pButton icon="fa-external-link-square" label="Show">Dialog</button>
 
