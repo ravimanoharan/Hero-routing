@@ -1,0 +1,4 @@
+<h3 class="head" (click)="onSelect()">{{title}}</h3>
+<div [hidden]="!active" class.active="active">
+	<ng-content></ng-content>
+</div>

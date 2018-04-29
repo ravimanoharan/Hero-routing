@@ -1,0 +1,27 @@
+<h1>{{title}}</h1>
+<nav>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/heroes">Heroes</a>
+</nav>
+<router-outlet></router-outlet>
+<app-messages></app-messages>
+
+<app-accordion-group>
+	<app-accordion *ngFor="let accordion of accordions" title="{{accordion.title}}">
+		{{accordion.content}}
+	</app-accordion>
+</app-accordion-group>
+
+<!-- Dialogbox -->
+<p-dialog header="Title" [(visible)]="display">
+    Content
+</p-dialog>
+<button type="text" (click)="showDialog()" pButton icon="fa-external-link-square" label="Show">Dialog</button>
+
+<!-- Data table -->
+<p-dataTable [value]="cars" [loading]="loading" [(selection)]="selectedCar" (onRowClick)="getCellValue($event)">
+    <p-column field="vin" header="Vin"></p-column>
+    <p-column field="year" header="Year"></p-column>
+    <p-column field="brand" header="Brand"></p-column>
+    <p-column field="color" header="Color"></p-column>
+</p-dataTable>
