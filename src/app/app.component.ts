@@ -51,11 +51,23 @@ export class AppComponent {
     }
 
     /* Data Table */
+    // targetEle: any[];
     getCellValue(event) {
       // console.log(event.originalEvent.target.innerText);
-      this.selectedCar = event.originalEvent.target.innerText;
+
+      // this.targetEle = event.originalEvent.target;
+      if(document.getElementsByClassName("editElement").length > 0) {
+        document.getElementsByClassName("editElement")[0].classList.remove("editElement");
+      }
+      event.originalEvent.target.className += " editElement";
+      this.selectedCar = event.originalEvent.target.textContent.trim();
       this.display = true;
     }
+
+    // editComplete(e) {
+    //   console.log('data', e.data);
+    //   console.log('index', e.index);
+    // }
 
     /* Editor */
     editValue: string;
@@ -65,8 +77,9 @@ export class AppComponent {
     }
 
     doneEdit() {
-      this.selectedCar =this. editValue;
+      this.selectedCar =this.editValue;
+      document.getElementsByClassName("editElement")[0].children[0].innerHTML = this.editValue;
+      this.display = false;
     }
-
      
 }
