@@ -51,29 +51,46 @@ export class AppComponent {
     }
 
     /* Data Table */
-    // targetEle: any[];
-    getCellValue(event) {
-      // console.log(event.originalEvent.target.innerText);
+    parentElement: any;
 
-      // this.targetEle = event.originalEvent.target;
+    
+    getParentByTagName(node, tagname) {
+      var parent;
+      if (node === null || tagname === '') return;
+      if(node.tagName.toLowerCase() == "td") {
+        parent = node;
+      } else {
+        parent  = node.parentNode;
+        tagname = tagname.toUpperCase();
+
+        while (parent.tagName !== "HTML") {
+          if (parent.tagName === tagname) {
+            return parent;
+          }
+          parent = parent.parentNode;
+        }
+      }
+
+        return parent;
+    }
+
+    getCellValue(event) {
+
+      this.parentElement = this.getParentByTagName(event.originalEvent.target ,"td")
+
       if(document.getElementsByClassName("editElement").length > 0) {
         document.getElementsByClassName("editElement")[0].classList.remove("editElement");
       }
-      event.originalEvent.target.className += " editElement";
-      this.selectedCar = event.originalEvent.target.textContent.trim();
+      this.parentElement.className += " editElement";
+      this.selectedCar = this.parentElement.textContent.trim();
       this.display = true;
     }
-
-    // editComplete(e) {
-    //   console.log('data', e.data);
-    //   console.log('index', e.index);
-    // }
 
     /* Editor */
     editValue: string;
     getEditorValue(e) {
       // console.log(e.textValue);
-      this.editValue = e.textValue;
+      this.editValue = e.htmlValue;
     }
 
     doneEdit() {
